@@ -1,8 +1,15 @@
 /**
+ * Location Icon
+ */
+let myIcon = L.icon({
+  iconUrl: '../icons/location.svg',
+  className: 'location-icon'
+});
+
+/**
  * Common database helper functions.
  */
 class DBHelper {
-
   /**
    * Database URL.
    * Change this to restaurants.json file location on your server.
@@ -154,28 +161,30 @@ class DBHelper {
   }
 
   /**
+   * Restaurant image Alt.
+   */
+  static imageAltForRestaurant(restaurant) {
+    return (`Restaurant ${restaurant.name}`);
+  }
+
+  /**
    * Map marker for a restaurant.
    */
    static mapMarkerForRestaurant(restaurant, map) {
     // https://leafletjs.com/reference-1.3.0.html#marker  
     const marker = new L.marker([restaurant.latlng.lat, restaurant.latlng.lng],
-      {title: restaurant.name,
-      alt: restaurant.name,
-      url: DBHelper.urlForRestaurant(restaurant)
+      {
+        title: restaurant.name,
+        alt: restaurant.name,
+        url: DBHelper.urlForRestaurant(restaurant),
+        icon: myIcon
       })
       marker.addTo(newMap);
+      // It delete the tabindex attribute
+      marker._icon.removeAttribute('tabindex');
+
     return marker;
   } 
-  /* static mapMarkerForRestaurant(restaurant, map) {
-    const marker = new google.maps.Marker({
-      position: restaurant.latlng,
-      title: restaurant.name,
-      url: DBHelper.urlForRestaurant(restaurant),
-      map: map,
-      animation: google.maps.Animation.DROP}
-    );
-    return marker;
-  } */
-
 }
+
 
