@@ -158,9 +158,31 @@ createReviewHTML = (review) => {
   date.innerHTML = review.date;
   li.appendChild(date);
 
-  const rating = document.createElement('p');
-  rating.innerHTML = `Rating: ${review.rating}`;
+  const rating = document.createElement('div');
+  rating.className = 'restaurant-rating';
+  rating.setAttribute('aria-label', `${review.rating}` + ' stars');
   li.appendChild(rating);
+
+  const fullStar = `<img src="../icons/fullstar.svg" alt="full-star">`;
+  const emptyStar = `<img src="../icons/emptystar.svg" alt="empty-star">`;
+
+  const starScores = () => {
+          (review.rating === 5) ? html = fullStar + fullStar + fullStar + fullStar + fullStar
+      :
+          (review.rating === 4) ? html = fullStar + fullStar + fullStar + fullStar + emptyStar
+      :
+          (review.rating === 3) ? html = fullStar + fullStar + fullStar + emptyStar + emptyStar
+      :
+          (review.rating === 2) ? html = fullStar + fullStar + emptyStar + emptyStar + emptyStar
+      :
+          (review.rating === 1) ? html = fullStar + emptyStar + emptyStar + emptyStar + emptyStar
+      :
+          html = emptyStar + emptyStar + emptyStar + emptyStar + emptyStar
+
+      rating.innerHTML = html;
+  };
+
+  starScores();
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
