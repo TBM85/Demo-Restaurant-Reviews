@@ -213,5 +213,21 @@ addTabindexToMap = () => {
   mapTabindex.setAttribute('tabindex', '-1');
 }
 
-
+/**
+ *  Service Worker registration
+ * 
+ *  Code obtain from MDN: 
+ *  https://developer.mozilla.org/es/docs/Web/API/Service_Worker_API/Using_Service_Workers
+ */
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+  .register('/sw.js', { scope: '/' })
+  .then(reg => {
+    // registration worked
+    console.log('Registration worked!', reg.scope);
+  }).catch(error => {
+    // registration failed
+    console.log('Registration failed.', error);
+  });
+}
   
