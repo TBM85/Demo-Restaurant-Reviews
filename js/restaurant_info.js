@@ -163,8 +163,8 @@ createReviewHTML = (review) => {
   rating.setAttribute('aria-label', `${review.rating}` + ' stars');
   li.appendChild(rating);
 
-  const fullStar = `<img src="../icons/fullstar.svg" alt="full-star">`;
-  const emptyStar = `<img src="../icons/emptystar.svg" alt="empty-star">`;
+  const fullStar = `<img src="./icons/fullstar.svg" alt="full-star">`;
+  const emptyStar = `<img src="./icons/emptystar.svg" alt="empty-star">`;
 
   const starScores = () => {
           (review.rating === 5) ? html = fullStar + fullStar + fullStar + fullStar + fullStar
