@@ -22,7 +22,7 @@
   }
   #restaurant-container {
       padding: 9.2em 1.5em 1em;
-      width: 60%;
+      width: 58%;
   }
   #restaurant-info-schedules {
       display: flex;
@@ -38,7 +38,7 @@
   }
   #reviews-container {
       padding: 0 1.5em 4em;
-      width: 60%;
+      width: 58%;
   }
   .inside #footer {
       bottom: 0;
