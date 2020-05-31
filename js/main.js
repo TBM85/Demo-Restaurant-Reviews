@@ -105,7 +105,7 @@ updateRestaurants = () => {
 
   DBHelper.fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, (error, restaurants) => {
     if (error) { // Got an error!
-      console.error(error);
+      error = `<h2>There are no results for your search</h2>`;
     } else {
       resetRestaurants(restaurants);
       fillRestaurantsHTML();
@@ -230,4 +230,3 @@ if ('serviceWorker' in navigator) {
     console.log('Registration failed.', error);
   });
 }
-  

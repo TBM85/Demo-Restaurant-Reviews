@@ -8,7 +8,7 @@ let staticCacheName = "restaurant-reviews-v1";
  */
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('staticCacheName').then(cache => {
+    caches.open(staticCacheName).then(cache => {
       return cache.addAll([
         '/index.html',
         '/restaurant.html',
@@ -55,7 +55,7 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(response => {
       return response || fetch(event.request).then(fetchResponse => {    
-        return caches.open('staticCacheName').then(cache => {
+        return caches.open(staticCacheName).then(cache => {
           cache.put(event.request, fetchResponse.clone());
           return fetchResponse;
         });

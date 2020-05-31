@@ -237,7 +237,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 #maincontent {
     background-color: #dcdcdc;
-    min-height: 100%;
+    min-height: 82vh;
 }
 #footer {
     background-color: #1F252A;
